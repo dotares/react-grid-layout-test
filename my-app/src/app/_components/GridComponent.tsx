@@ -9,9 +9,7 @@ const GridComponent = () => {
             minHeight={100}
             defaultSize={{ width: 200, height: 100 }}
             grid={[0, 100]}
-        >
-            sample resizable component
-        </Resizable>
+        ></Resizable>
     );
 };
 
