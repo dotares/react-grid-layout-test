@@ -1,8 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState, useRef } from "react";
+import GridComponent from "./GridComponent";
 
 const GridParent = () => {
-    return <div className="bg-zinc-600 text-white h-[1200px] w-1/2"></div>;
+    const [clickLocation, setClickLocation] = useState<undefined | number>(
+        undefined
+    );
+
+    const ref = useRef<HTMLDivElement | null>(null);
+
+    // if (ref.current) {
+    //     const rect = ref.current.getBoundingClientRect();
+    // }
+
+    return (
+        <div
+            onMouseDown={(e) => {
+                setClickLocation(e.clientY);
+                console.log(e.clientY);
+            }}
+            className="bg-zinc-600 text-white h-[2400px] w-1/2 relative"
+            ref={ref}
+        >
+            <GridComponent
+                style={{
+                    top: clickLocation,
+                }}
+            />
+        </div>
+    );
 };
 
 export default GridParent;
